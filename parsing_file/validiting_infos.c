@@ -16,10 +16,12 @@ void	validate_args(t_string **args, int nargs, int signal)
 {
 	int i;
 
-	i = 1;
+	i = 0;
 	while ((*args)[i])
 	{
+		// puts((*args)[i]);
 		(*args)[i] = trim((*args)[i], " ");
+		puts((*args)[i]);
 		if (!isnumber((*args)[i]))
 			return (handle_error(signal, FAIL));
 		i++;
@@ -59,4 +61,10 @@ int		is_info_full(void)
 		if (g_infos[i] == 0)
 			return (0);
 	return (1);
+}
+
+void	update_col_name(t_string line)
+{
+	g_world.cols = MAX((int)ft_strlen(line), g_world.cols);
+	g_infos[map] = 1;
 }

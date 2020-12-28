@@ -20,7 +20,6 @@ void	put_sprites_in_map(void)
 	int			y;
 
 	i = -1;
-	printf("%d|%d\n", g_world.cols, g_world.rows);
 	while (++i < g_world.numofsprites)
 	{
 		sp = g_world.sprites[i];
@@ -37,11 +36,11 @@ void	put_sprites_in_map(void)
 void	setrotationangle(void)
 {
 	if (PLAYERNAME == 'N')
-		g_world.player.rotation.angle = 90;
-	else if (PLAYERNAME == 'S')
 		g_world.player.rotation.angle = -90;
+	else if (PLAYERNAME == 'S')
+		g_world.player.rotation.angle = 90;
 	else if (PLAYERNAME == 'E')
-		g_world.player.rotation.angle = 180;
+		g_world.player.rotation.angle = 0;
 }
 
 void	get_player_pos(t_string line, int row)

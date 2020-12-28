@@ -300,6 +300,7 @@ void			render_sprite(t_sprite sprite);
 float			dist(t_vector a, t_vector b);
 void			save_first_frame_in_bmp_file();
 int				tablen(void **tab);
+void			update_col_name(t_string line);
 int				handle_input(int key, void *p);
 void			update_player();
 float			deg_to_rad(int angle);

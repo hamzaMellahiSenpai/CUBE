@@ -15,15 +15,19 @@ ARG = -c
 SRC = *.c */*.c
 CC  = @gcc
 MLX = -lmlx -framework OpenGL -framework AppKit -g
+NAME = Cub3d
 
-all:
-	gcc -g *.c  */*.c $(FLAGS) $(MLX) -D BONUS=0
+all : ${NAME}
+	
+${NAME}:
+	gcc -g *.c  */*.c $(FLAGS) $(MLX) -D BONUS=0 -o ${NAME}
 clean:
 	rm -rf *.o
 
 fclean: clean
+		rm -rf ${NAME}
 
 re: fclean all
 
 bonus:
-	gcc $(FLAGS) $(SRC) -D BONUS=1 $(MLX)	
+	gcc $(FLAGS) $(SRC) -D BONUS=1 $(MLX) -o ${NAME}

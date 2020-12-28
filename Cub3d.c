@@ -111,7 +111,7 @@ int		main(int ac, char **av)
 		exit(FAIL);
 	}
 	g_world.numofsprites = 0;
-	g_world.player.rotation.angle = 0;
+	g_world.player.rotation.angle = 180;
 	g_infos[9] = 0;
 	g_mlx = mlx_init();
 	read_file(av[1]);

@@ -110,23 +110,24 @@ void	get_rows_cols(t_string file_name)
 	t_string	line;
 	t_string	tmp;
 	int			nbits;
+	int			map_end;
 
 	fd = open(file_name, O_RDONLY);
 	g_world.rows = 2;
 	nbits = 1;
+	map_end = 0;
 	while (nbits)
 	{
 		nbits = get_next_line(fd, &line);
 		tmp = trim(line, " \t");
-		if (*line == 'S' && ft_strlen(line) > 2 && line[1] != 'O')
+		if (tmp[0] == 'S' && ft_strlen(line) > 2 && line[1] != 'O')
 			g_world.sprites_count++;
-		if (*tmp == '1' && g_world.rows++)
-		{
-			g_world.cols = MAX((int)ft_strlen(line), g_world.cols);
-			g_infos[map] = 1;
-		}
-		else if (*tmp != 0 && g_infos[map] == 1)
+		if (*tmp != '\0' && map_end == 1)
 			return (handle_error(INVALID_MAP, FAIL));
+		else if (*tmp == '1' && g_world.rows++)
+			update_col_name(line);
+		else if (*line == '\0' && g_infos[map] == 1 && map_end == 0)
+			map_end = 1;
 	}
 	g_world.cols += 2;
 	close(fd);

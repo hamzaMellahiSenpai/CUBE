@@ -39,14 +39,41 @@ void	read_image(t_string line, int index)
 	g_infos[index]++;
 }
 
+int		get_count(t_string str, char c)
+{
+	int		count;
+	int		i;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 void	read_color(t_string line, int index, int space)
 {
 	t_string	*colors;
+	int			g;
+	int			b;
+	int			r;
 
-	if (g_infos[index]++ || strlen(line) < 2 || line[1] != ' ')
+	if (g_infos[index]++)
 		return (handle_error(DUPLICATE_COLOR, FAIL));
+	if (strlen(line) < 2 || line[1] != ' ' || get_count(line, ',') != 2)
+		return (handle_error(INVALID_COLORS, FAIL));
 	colors = ft_split(line + 1, ',');
 	validate_args(&colors, 3, INVALID_COLORS);
-	g_world.colors[space] = rgb_to_int(ft_atoi(colors[0]),
-			ft_atoi(colors[1]), ft_atoi(colors[2]));
+	r = ft_atoi(colors[0]);
+	g = ft_atoi(colors[1]);
+	b = ft_atoi(colors[2]);
+	printf("%s|%s|%s\n", colors[0], colors[1], colors[2]);
+	printf("%d|%d|%d\n", r, g, b);
+	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
+		return (handle_error(INVALID_COLORS, FAIL));
+	g_world.colors[space] = rgb_to_int(r, g, b);
 }
