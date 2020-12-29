@@ -36,7 +36,7 @@ void	put_sprites_in_map(void)
 void	setrotationangle(void)
 {
 	if (PLAYERNAME == 'N')
-		g_world.player.rotation.angle = - M_PI / 2;
+		g_world.player.rotation.angle = -M_PI / 2;
 	else if (PLAYERNAME == 'S')
 		g_world.player.rotation.angle = M_PI / 2;
 	else if (PLAYERNAME == 'E')
