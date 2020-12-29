@@ -46,6 +46,7 @@
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
 # define BLOCK_SIZE 64
+#define PLAYERRJ g_world.player.rj
 # define MINIMAP_SCALE SWIDTH * 0.00009
 # define DEG(x) x * 180 / M_PI
 
@@ -159,6 +160,7 @@ typedef struct	s_player
 	int					height;
 	char				name;
 	t_vector			pos_in_map;
+	int					rj;
 }				t_player;
 
 typedef struct	s_ray

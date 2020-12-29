@@ -43,14 +43,12 @@ t_image	load_image(int i, t_string path, int type)
 void	load_texture(t_string line, int index)
 {
 	t_string path;
-	t_string *tab;
 
 	if (g_infos[index])
 		return (handle_error(DUPLICATE_TEXTURE, FAIL));
-	tab = ft_split(line, ' ');
-	if (tablen((void**)tab) != 2 || ft_strlen(tab[0]) != 2)
+	if (ft_strlen(line) < 3)
 		return (handle_error(INVALID_PATH, FAIL));
-	path = tab[1];
+	path = line + 3;
 	load_image(index, path, TEXTURE);
 }
 
@@ -58,9 +56,11 @@ void	setup_bns_sprite(t_sprite *sp, char **tab2, char **tab)
 {
 	t_animation	anim;
 	t_vector	pm;
+	t_string	*x;
 
 	sp->type = strlen(tab2[0]) == 2 ? tab2[0][1] : 'P';
-	validate_args(&tab, 7, INVALID_SPRITE_ARG);
+	x = tab + 1;
+	validate_args(&x, 6, INVALID_SPRITE_ARG);
 	anim.is_play_on_awake = ft_atoi(tab[3]);
 	anim.nofframes = ft_atoi(tab[4]);
 	anim.fps = ft_atoi(tab[5]);

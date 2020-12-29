@@ -19,9 +19,7 @@ void	validate_args(t_string **args, int nargs, int signal)
 	i = 0;
 	while ((*args)[i])
 	{
-		// puts((*args)[i]);
 		(*args)[i] = trim((*args)[i], " ");
-		puts((*args)[i]);
 		if (!isnumber((*args)[i]))
 			return (handle_error(signal, FAIL));
 		i++;

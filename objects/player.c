@@ -65,8 +65,16 @@ void	update_player(void)
 
 	player_speed = g_world.player.speed;
 	n_p_rotation = g_world.player.rotation.angle;
-	step.x = player_speed * cos(n_p_rotation) * WALKDIRECTION;
-	step.y = player_speed * sin(n_p_rotation) * WALKDIRECTION;
+	if (g_world.player.rj != 0)
+	{
+		step.x = player_speed * cos(n_p_rotation - M_PI / 2) * PLAYERRJ;
+		step.y = player_speed * sin(n_p_rotation - M_PI / 2) * PLAYERRJ;
+	}
+	else
+	{
+		step.x = player_speed * cos(n_p_rotation) * WALKDIRECTION;
+		step.y = player_speed * sin(n_p_rotation) * WALKDIRECTION;
+	}
 	n_p_position = add_vectors(PLAYERPOS, step);
 	n_p_rotation = norm_angle(n_p_rotation + TURNDIRECTION * PROTATIONSPEED);
 	g_world.player.rotation.angle = n_p_rotation;

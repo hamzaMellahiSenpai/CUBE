@@ -2,7 +2,7 @@ R 500 1000
 NO ./assets/textures/1375EA.xpm
 SO ./assets/textures/1375SO.xpm
 WE ./assets/textures/1375WE.xpm
-EA ./assets/textures/1375NO
+EA ./assets/textures/13 75NO
  
 F 0,0  ,0
 C 105,105,105

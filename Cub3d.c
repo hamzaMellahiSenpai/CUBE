@@ -25,6 +25,7 @@ void	init_world(void)
 	g_world.player.coins = 100;
 	g_world.player.maxlives = 3;
 	g_world.player.lives = 1;
+	g_world.player.rj = 0;
 	g_world.gravity = 0;
 	g_world.is_game_over = BONUS ? 1 : 0;
 	g_world.is_game_paused = 0;

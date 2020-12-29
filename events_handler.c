@@ -42,6 +42,10 @@ int		key_pressed(int key_code, void *p)
 		g_world.player.walk_direction = 1;
 	else if (key_code == K_S)
 		g_world.player.walk_direction = -1;
+	else if (key_code == K_A)
+		g_world.player.rj = 1;
+	else if (key_code == K_D)
+		g_world.player.rj = -1;
 	else if (BONUS)
 		do_bonus_event(key_code);
 	return (1);
@@ -50,10 +54,10 @@ int		key_pressed(int key_code, void *p)
 int		key_released(int key_code, void *p)
 {
 	(void)p;
-	if (key_code == RIGHT_ARROW)
+	if (key_code == RIGHT_ARROW || key_code == LEFT_ARROW)
 		g_world.player.turn_direction = 0;
-	else if (key_code == LEFT_ARROW)
-		g_world.player.turn_direction = 0;
+	else if (key_code == K_A || key_code == K_D)
+		g_world.player.rj = 0;
 	else if (key_code == K_W)
 		g_world.player.walk_direction = 0;
 	else if (key_code == K_S)
