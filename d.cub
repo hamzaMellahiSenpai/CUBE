@@ -6,6 +6,7 @@ SO ./assets/textures/1375SO.xpm
 WE ./assets/textures/1375WE.xpm
 EA ./assets/textures/13 75NO
 F 200,200,200
+C 0,191,255
 
 S ./assets/sprites/guard.xpm
 

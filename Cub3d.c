@@ -58,7 +58,7 @@ t_image	new_img(t_string path)
 void	setup(void)
 {
 	init_world();
-	g_window = mlx_new_window(g_mlx, g_screen.width, g_screen.height, "cube3D");
+	g_window = mlx_new_window(g_mlx, g_screen.width, g_screen.height, "cub3D");
 	g_img.img = mlx_new_image(g_mlx, g_screen.width, g_screen.height);
 	g_p = (int *)mlx_get_data_addr(g_img.img, &g_img.bits_per_pixel,
 	&g_img.size_line, &g_img.endian);
@@ -100,7 +100,6 @@ int		update(int key)
 		do_bonus_part();
 	mlx_put_image_to_window(g_mlx, g_window, g_img.img, 0, 0);
 	background(0);
-	printf("%f\n", g_world.player.rotation.angle);
 	g_world.frame++;
 	return (0);
 }

@@ -28,8 +28,11 @@ void	validate_args(t_string **args, int nargs, int signal)
 		return (handle_error(signal, FAIL));
 }
 
-void	check_for_info(t_string line)
+void	check_for_info(t_string tmp)
 {
+	t_string	line;
+
+	line = trim(tmp, " ");
 	if (*line == 'R')
 		read_resolution(line);
 	else if (line[0] == 'N')

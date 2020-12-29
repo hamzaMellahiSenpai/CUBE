@@ -18,13 +18,18 @@ void	read_resolution(t_string line)
 
 	if (g_infos[resolution]++)
 		return (handle_error(DUPLICATE_RESOLUTION, FAIL));
-	if (!(ft_strlen(line) > 2 && line[2] != ' '))
+	tab = ft_split(line + 2, ' ');
+	puts(tab[0]);
+	puts(tab[1]);
+	if (ft_strlen(line) < 2 || line[1] != ' ')
 		return (handle_error(INVALID_RESOLUTION, FAIL));
 	tab = ft_split(line + 2, ' ');
+	puts(tab[0]);
+	puts(tab[1]);
 	validate_args(&tab, 2, INVALID_RESOLUTION);
 	g_screen.width = ft_atoi(tab[0]);
 	g_screen.height = ft_atoi(tab[1]);
-	if (g_screen.width < 100 || g_screen.height < 100)
+	if (g_screen.width == 0 || g_screen.height == 0)
 		return (handle_error(INVALID_RESOLUTION, FAIL));
 	if (g_screen.width > 2560)
 		g_screen.width = 2560;

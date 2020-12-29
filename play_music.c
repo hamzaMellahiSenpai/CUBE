@@ -20,7 +20,7 @@ int		play_music(t_string path)
 	if (g_world.bc_music_pid < 0)
 		handle_error(SUBPROCESS, FAIL);
 	else if (pid == 0)
-		execlp("mpg123", "mpg123", "-q", path, 0);
+		execlp("mpg123", "mpg123", "-q", "-loop", path, 0);
 	return (pid);
 }
 
