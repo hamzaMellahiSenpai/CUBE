@@ -48,9 +48,9 @@ void	fill_map(t_string file_name, t_string line)
 		nbits = get_next_line(fd, &line);
 		if (trim(line, " \t")[0] == '1' && ((i = -1) || 1))
 		{
-			get_player_pos(line, j);
 			while (++i < g_world.cols && i < ft_strlen(line))
 			{
+				get_player_pos(i, j, line[i]);
 				g_world.map[j][i] = line[i];
 				get_sprite_pos(i, j);
 			}

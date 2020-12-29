@@ -46,7 +46,7 @@
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
 # define BLOCK_SIZE 64
-#define PLAYERRJ g_world.player.rj
+# define PLAYERRJ g_world.player.rj
 # define MINIMAP_SCALE SWIDTH * 0.00009
 # define DEG(x) x * 180 / M_PI
 
@@ -373,7 +373,7 @@ void			validate_args(t_string **args, int nargs, int signal);
 void			check_for_info(t_string line);
 int				is_info_full();
 void			read_file(t_string file_name);
-void			get_player_pos(t_string line, int row);
+void			get_player_pos(int col, int row, char c);
 void			get_rows_cols(t_string file_name);
 void			check_closed_map();
 void			allocate_map();

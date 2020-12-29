@@ -43,23 +43,19 @@ void	setrotationangle(void)
 		g_world.player.rotation.angle = 0;
 }
 
-void	get_player_pos(t_string line, int row)
+void	get_player_pos(int col, int row, char c)
 {
 	t_string	str;
-	int			col;
 
 	str = "NSWE";
-	col = 0;
 	while (*str)
 	{
-		if (ft_strchr(line, *str))
+		if (*str == c)
 		{
 			if (g_infos[player_position]++)
 				return (handle_error(DUPLICATE_PLAYER, FAIL));
 			else
 			{
-				while (*line++ != *str)
-					col++;
 				PLAYERPOS = new_vector(BLOCK_SIZE * col + BLOCK_SIZE / 2,
 						BLOCK_SIZE * row + BLOCK_SIZE / 2);
 				PLAYERNAME = *str;

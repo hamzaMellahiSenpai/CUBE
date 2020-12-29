@@ -71,8 +71,6 @@ void	read_color(t_string line, int index, int space)
 	r = ft_atoi(colors[0]);
 	g = ft_atoi(colors[1]);
 	b = ft_atoi(colors[2]);
-	printf("%s|%s|%s\n", colors[0], colors[1], colors[2]);
-	printf("%d|%d|%d\n", r, g, b);
 	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
 		return (handle_error(INVALID_COLORS, FAIL));
 	g_world.colors[space] = rgb_to_int(r, g, b);
