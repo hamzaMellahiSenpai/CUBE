@@ -55,7 +55,7 @@ int		is_info_full(void)
 	int i;
 
 	i = -1;
-	while (++i < 9)
+	while (++i <= 9)
 		if (g_infos[i] == 0)
 			return (0);
 	return (1);

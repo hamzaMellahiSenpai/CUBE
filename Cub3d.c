@@ -100,6 +100,7 @@ int		update(int key)
 		do_bonus_part();
 	mlx_put_image_to_window(g_mlx, g_window, g_img.img, 0, 0);
 	background(0);
+	printf("%f\n", g_world.player.rotation.angle);
 	g_world.frame++;
 	return (0);
 }
@@ -112,7 +113,7 @@ int		main(int ac, char **av)
 		exit(FAIL);
 	}
 	g_world.numofsprites = 0;
-	g_world.player.rotation.angle = 180;
+	g_world.player.rotation.angle = M_PI;
 	g_infos[9] = 0;
 	g_mlx = mlx_init();
 	read_file(av[1]);
