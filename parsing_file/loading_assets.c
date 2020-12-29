@@ -48,7 +48,7 @@ void	load_texture(t_string line, int index)
 		return (handle_error(DUPLICATE_TEXTURE, FAIL));
 	if (ft_strlen(line) < 3)
 		return (handle_error(INVALID_PATH, FAIL));
-	path = line + 3;
+	path = trim(line + 2, " ");
 	load_image(index, path, TEXTURE);
 }
 
@@ -73,11 +73,10 @@ void	setup_bns_sprite(t_sprite *sp, char **tab2, char **tab)
 			(pm.y + 0.5) * BLOCK_SIZE);
 }
 
-void	setup_sprite(t_sprite *sprite, char **tab2, t_string line)
+void	setup_sprite(t_sprite *sprite)
 {
-	tab2 = ft_split(line, ' ');
-	if (tablen((void**)tab2) != 2)
-		return (handle_error(INVALID_SPRITE_ARG, FAIL));
+// 	if (tablen((void**)tab2) != 2)
+// 		return (handle_error(INVALID_SPRITE_ARG, FAIL));
 	if (g_infos[sprite_texture]++)
 		return (handle_error(DUPLICATE_SPRITE, FAIL));
 	sprite->anim.is_play_on_awake = 0;
@@ -90,15 +89,18 @@ void	load_sprite(t_string line)
 	t_string	*tab;
 	t_sprite	sprite;
 	t_string	*tab2;
+	t_string	path;
 
 	tab = ft_split(line, '|');
 	tab2 = ft_split(tab[0], ' ');
-	if (ft_strlen(tab2[0]) > 2 ||
-	(ft_strlen(tab2[0]) == 2 && !ft_strchr("CHT", tab2[0][1])))
+	if (ft_strlen(tab[0]) < 3)
+		return (handle_error(INVALID_PATH, FAIL));
+	path = trim(tab[0] + 1, " ");
+	if (ft_strlen(tab2[0]) == 2 && (!BONUS || !ft_strchr("CHT", tab2[0][1])))
 		return (handle_error(INVALID_SPRITE_ARG, FAIL));
-	sprite.path = tab2[1];
+	sprite.path = path;
 	if (!BONUS)
-		setup_sprite(&sprite, tab2, line);
+		setup_sprite(&sprite);
 	else
 		setup_bns_sprite(&sprite, tab2, tab);
 	sprite.visible = 1;
