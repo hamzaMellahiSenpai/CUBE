@@ -20,7 +20,7 @@ void	init_world(void)
 	g_world.player.walk_direction = 0;
 	g_world.player.turn_direction = 0;
 	g_world.player.rotation.speed = 5 * 0.0174533;
-	g_world.player.speed = 20;
+	g_world.player.speed = 40;
 	g_world.player.offset = 0;
 	g_world.player.coins = 100;
 	g_world.player.maxlives = 3;

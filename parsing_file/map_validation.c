@@ -39,15 +39,19 @@ void	fill_map(t_string file_name, t_string line)
 	int			i;
 	int			fd;
 	int			nbits;
+	int			flag;
 
 	fd = open(file_name, O_RDONLY);
 	j = 1;
+	flag = 0;
 	nbits = 1;
 	while (nbits)
 	{
 		nbits = get_next_line(fd, &line);
-		if (trim(line, " \t")[0] == '1' && ((i = -1) || 1))
+		if ((trim(line, " \t")[0] == '1' ||
+		(trim(line, " \t")[0] == 0 && flag == 1)) && ((i = -1) || 1))
 		{
+			flag = 1;
 			while (++i < g_world.cols && i < ft_strlen(line))
 			{
 				get_player_pos(i, j, line[i]);
@@ -113,7 +117,6 @@ void	get_rows_cols(t_string file_name)
 	int			map_end;
 
 	fd = open(file_name, O_RDONLY);
-	g_world.rows = 2;
 	nbits = 1;
 	map_end = 0;
 	while (nbits)
@@ -122,9 +125,10 @@ void	get_rows_cols(t_string file_name)
 		tmp = trim(line, " \t");
 		if (tmp[0] == 'S' && ft_strlen(line) > 2 && line[1] != 'O')
 			g_world.sprites_count++;
-		if (*tmp != '\0' && map_end == 1)
+		else if (*tmp != '\0' && map_end == 1)
 			return (handle_error(INVALID_MAP, FAIL));
-		else if (*tmp == '1' && g_world.rows++)
+		else if ((*tmp == '1' || (*line != 0 && *tmp == '\0'))
+		&& g_world.rows++)
 			update_col_name(line);
 		else if (*line == '\0' && g_infos[map] == 1 && map_end == 0)
 			map_end = 1;

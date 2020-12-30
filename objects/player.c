@@ -78,7 +78,7 @@ void	update_player(void)
 	n_p_position = add_vectors(PLAYERPOS, step);
 	n_p_rotation = norm_angle(n_p_rotation + TURNDIRECTION * PROTATIONSPEED);
 	g_world.player.rotation.angle = n_p_rotation;
-	collision = add_vectors(PLAYERPOS, multi_vector_to_n(step, 3));
+	collision = add_vectors(PLAYERPOS, multi_vector_to_n(step, 2));
 	if ((!BONUS && !wall_at(collision)) || is_secret_door(collision) ||
 		(can_walk_on_object(n_p_position) && !wall_at(collision)))
 		PLAYERPOS = n_p_position;

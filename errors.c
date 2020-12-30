@@ -36,7 +36,10 @@ void		init_errors(void)
 
 void		handle_error(int error_index, int status)
 {
-	perror(g_messages[error_index]);
+	t_string output;
+
+	output = ft_strjoin("Error\n", g_messages[error_index], 2);
+	write(1, output, ft_strlen(output));
 	free_all(status);
 }
 

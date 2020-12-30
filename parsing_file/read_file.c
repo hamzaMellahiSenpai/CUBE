@@ -81,6 +81,7 @@ void	read_file(t_string file_name)
 	tab = ft_split(file_name, '.');
 	if (ft_strcmp(tab[tablen((void**)tab) - 1], "cub") != 0)
 		handle_error(INVALID_FILE_NAME, FAIL);
+	g_world.rows = 2;
 	get_rows_cols(file_name);
 	allocate_map();
 	fill_map(file_name, line);

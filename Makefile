@@ -27,7 +27,7 @@ OUT = $(SRC:.c=.o)
 all : ${NAME}
 	
 ${NAME}:
-	gcc -g ${SRC} $(FLAGS) $(MLX) -D BONUS=0 -o ${NAME} -fsanitize=address
+	gcc ${SRC} $(FLAGS) $(MLX) -D BONUS=0 -o ${NAME}
 clean:
 	rm -rf ${OUT}
 
@@ -37,4 +37,4 @@ fclean: clean
 re: fclean all
 
 bonus:
-	gcc $(FLAGS) $(SRC) -D BONUS=1 $(MLX) -o ${NAME} -fsanitize=address
+	gcc $(FLAGS) $(SRC) -D BONUS=1 $(MLX) -o ${NAME}

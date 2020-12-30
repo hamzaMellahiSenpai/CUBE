@@ -27,9 +27,9 @@ void	read_resolution(t_string line)
 	g_screen.height = ft_atoi(tab[1]);
 	if (g_screen.width == 0 || g_screen.height == 0)
 		return (handle_error(INVALID_RESOLUTION, FAIL));
-	if (g_screen.width > 2560)
+	if (g_screen.width > 2560 || g_screen.width < 0)
 		g_screen.width = 2560;
-	if (g_screen.height > 1440)
+	if (g_screen.height > 1440 || g_screen.height < 0)
 		g_screen.height = 1440;
 }
 

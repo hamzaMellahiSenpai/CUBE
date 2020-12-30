@@ -75,8 +75,6 @@ void	setup_bns_sprite(t_sprite *sp, char **tab2, char **tab)
 
 void	setup_sprite(t_sprite *sprite)
 {
-// 	if (tablen((void**)tab2) != 2)
-// 		return (handle_error(INVALID_SPRITE_ARG, FAIL));
 	if (g_infos[sprite_texture]++)
 		return (handle_error(DUPLICATE_SPRITE, FAIL));
 	sprite->anim.is_play_on_awake = 0;
@@ -95,7 +93,7 @@ void	load_sprite(t_string line)
 	tab2 = ft_split(tab[0], ' ');
 	if (ft_strlen(tab[0]) < 3)
 		return (handle_error(INVALID_PATH, FAIL));
-	path = trim(tab[0] + 1, " ");
+	path = BONUS ? trim(tab[0] + 2, " ") : trim(tab[0] + 1, " ");
 	if (ft_strlen(tab2[0]) == 2 && (!BONUS || !ft_strchr("CHT", tab2[0][1])))
 		return (handle_error(INVALID_SPRITE_ARG, FAIL));
 	sprite.path = path;
