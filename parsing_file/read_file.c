@@ -76,9 +76,9 @@ void	read_file(t_string file_name)
 	i = -1;
 	while (++i < 10)
 		g_infos[i] = 0;
+	init_errors();
 	check_for_file(file_name);
 	line = NULL;
-	init_errors();
 	tab = ft_split(file_name, '.');
 	if (ft_strcmp(tab[tablen((void**)tab) - 1], "cub") != 0)
 		handle_error(INVALID_FILE_NAME, FAIL);

@@ -108,7 +108,7 @@ int		main(int ac, char **av)
 {
 	if (ac == 1)
 	{
-		perror("NOT VALID NUMBER OF ARGS");
+		perror("Error\nNOT VALID NUMBER OF ARGS ;)");
 		exit(FAIL);
 	}
 	g_world.numofsprites = 0;
