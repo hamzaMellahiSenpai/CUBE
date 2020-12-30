@@ -33,16 +33,12 @@ void	get_sprite_pos(int x, int y)
 	z++;
 }
 
-void	fill_map(t_string file_name, t_string line)
+void	fill_map(int fd, t_string line, int j)
 {
-	int			j;
 	int			i;
-	int			fd;
 	int			nbits;
 	int			flag;
 
-	fd = open(file_name, O_RDONLY);
-	j = 1;
 	flag = 0;
 	nbits = 1;
 	while (nbits)

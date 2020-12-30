@@ -71,6 +71,7 @@ void	read_file(t_string file_name)
 	char		*line;
 	char		**tab;
 	int			i;
+	int			fd;
 
 	i = -1;
 	while (++i < 10)
@@ -84,7 +85,8 @@ void	read_file(t_string file_name)
 	g_world.rows = 2;
 	get_rows_cols(file_name);
 	allocate_map();
-	fill_map(file_name, line);
+	fd = open(file_name, O_RDONLY);
+	fill_map(fd, line, 0);
 	check_closed_map();
 	if (BONUS)
 		put_sprites_in_map();

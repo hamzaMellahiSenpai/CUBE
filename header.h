@@ -377,7 +377,7 @@ void			get_player_pos(int col, int row, char c);
 void			get_rows_cols(t_string file_name);
 void			check_closed_map();
 void			allocate_map();
-void			fill_map(t_string file_name, t_string line);
+void			fill_map(int fd, t_string line, int j);
 int				is_secret_door(t_vector coordinate);
 void			draw_hud();
 int				create_coins_count(int c, int len_nbr,
