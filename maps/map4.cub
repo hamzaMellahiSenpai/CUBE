@@ -3,7 +3,7 @@ R     1280 800
 
 NO      ./texture/mossy.xpm     
 
-SO ./texture/bluestone.xpm
+SO ./assets/textures/1375EA.xpm   
 
 WE ./texture/greystone.xpm
 EA ./texture/redbrick.xpm

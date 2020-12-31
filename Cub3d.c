@@ -96,7 +96,7 @@ int		update(int key)
 	update_field_of_view();
 	render_walls();
 	show_sprites();
-	if (BONUS)
+	// if (BONUS)
 		do_bonus_part();
 	mlx_put_image_to_window(g_mlx, g_window, g_img.img, 0, 0);
 	background(0);
