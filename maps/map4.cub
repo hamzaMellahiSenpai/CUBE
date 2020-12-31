@@ -8,7 +8,7 @@ SO ./texture/bluestone.xpm
 WE ./texture/greystone.xpm
 EA ./texture/redbrick.xpm
 
-S ./texture/barrel.xpm
+S ./assets/sprites/guard.xpm
 
 F    224,224,224
 C       204,229,255

@@ -1,5 +1,5 @@
 NO    ./texture/mossy.xpm     
-S ./texture/barrel.xpm  
+S ./assets/sprites/guard.xpm
 SO         ./texture/greystone.xpm   
 EA ./texture/bluestone.xpm
 WE      ./texture/redbrick.xpm    
