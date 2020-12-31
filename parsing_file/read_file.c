@@ -76,7 +76,6 @@ void	read_file(t_string file_name)
 	i = -1;
 	while (++i < 10)
 		g_infos[i] = 0;
-	init_errors();
 	check_for_file(file_name);
 	line = NULL;
 	tab = ft_split(file_name, '.');
@@ -86,7 +85,7 @@ void	read_file(t_string file_name)
 	get_rows_cols(file_name);
 	allocate_map();
 	fd = open(file_name, O_RDONLY);
-	fill_map(fd, line, 0);
+	fill_map(fd, line, 0, 0);
 	check_closed_map();
 	if (BONUS)
 		put_sprites_in_map();

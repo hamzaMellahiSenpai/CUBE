@@ -1,6 +1,6 @@
 NO    ./texture/mossy.xpm    
 
-S ./texture/barrel.xpm  
+S ./texture/greystone.xpm  
 SO         ./texture/greystone.xpm   
 EA ./texture/bluestone.xpm
 WE      ./texture/redbrick.xpm    

@@ -33,13 +33,11 @@ void	get_sprite_pos(int x, int y)
 	z++;
 }
 
-void	fill_map(int fd, t_string line, int j)
+void	fill_map(int fd, t_string line, int j, int flag)
 {
 	int			i;
 	int			nbits;
-	int			flag;
 
-	flag = 0;
 	nbits = 1;
 	while (nbits)
 	{
@@ -56,16 +54,19 @@ void	fill_map(int fd, t_string line, int j)
 			}
 			j++;
 		}
-		else
+		else if (!flag)
 			check_for_info(line);
+		else
+			handle_error(INVALID_MAP, FAIL);
 	}
 	close(fd);
 }
 
 void	check_closed_map(void)
 {
-	int j;
-	int i;
+	int			j;
+	int			i;
+	t_string	info;
 
 	j = 0;
 	while (++j < g_world.rows)
@@ -81,8 +82,8 @@ void	check_closed_map(void)
 					return (handle_error(INVALID_MAP, FAIL));
 				}
 	}
-	if (!is_info_full())
-		return (handle_error(MISSING_INFO, FAIL));
+	if ((info = is_info_full()))
+		return (handle_error2(ft_strjoin("MISSING ", info, 2), FAIL));
 }
 
 void	allocate_map(void)

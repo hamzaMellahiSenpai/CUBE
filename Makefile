@@ -12,7 +12,7 @@
 
 FLAGS = -Wall -Wextra -Werror
 ARG = -c
-SRC = 	cub3d.c                         graphics/hud.c                  graphics/vector.c               includes/func_utils3.c   \
+SRC = 	cub3D.c                         graphics/hud.c                  graphics/vector.c               includes/func_utils3.c   \
 	  	maths.c                         parsing_file/map_validation.c   play_music.c \
 		effects.c                       graphics/mini_map.c             includes/ft_split.c             includes/get_next_line.c    \
 		objects/player.c                parsing_file/read_file.c        save.c        errors.c                                  \
@@ -21,7 +21,7 @@ SRC = 	cub3d.c                         graphics/hud.c                  graphics/
 		includes/func_utils2.c          includes/sf_malloc.c            parsing_file/loading_assets.c   parsing_file/validiting_infos.c
 CC  = @gcc
 MLX = -lmlx -framework OpenGL -framework AppKit -g
-NAME = Cub3d
+NAME = cub3D
 OUT = $(SRC:.c=.o)
 
 all : ${NAME}

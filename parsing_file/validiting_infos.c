@@ -12,7 +12,7 @@
 
 #include "../header.h"
 
-void	validate_args(t_string **args, int nargs, int signal)
+void		validate_args(t_string **args, int nargs, int signal)
 {
 	int i;
 
@@ -28,7 +28,7 @@ void	validate_args(t_string **args, int nargs, int signal)
 		return (handle_error(signal, FAIL));
 }
 
-void	check_for_info(t_string tmp)
+void		check_for_info(t_string tmp)
 {
 	t_string	line;
 
@@ -53,18 +53,18 @@ void	check_for_info(t_string tmp)
 		return (handle_error(INVALID_MAP, FAIL));
 }
 
-int		is_info_full(void)
+t_string	is_info_full(void)
 {
 	int i;
 
 	i = -1;
 	while (++i <= 9)
 		if (g_infos[i] == 0)
-			return (0);
-	return (1);
+			return (g_infos_names[i]);
+	return (NULL);
 }
 
-void	update_col_name(t_string line)
+void		update_col_name(t_string line)
 {
 	g_world.cols = MAX((int)ft_strlen(line), g_world.cols);
 	g_infos[map] = 1;

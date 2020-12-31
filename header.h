@@ -95,7 +95,8 @@ enum			e_errors
 	INVALID_SPRITE_ARG,
 	INVALID_COLORS,
 	DUPLICATE_SPRITE,
-	SUBPROCESS
+	SUBPROCESS,
+	NOT_VALID_ARGS
 };
 
 enum			e_space
@@ -283,8 +284,9 @@ t_world			g_world;
 int				g_is_keypressed;
 t_shape			g_screen;
 int				g_infos[10];
+t_string		g_infos_names[10];
 t_image			g_textures[20];
-t_string		g_messages[18];
+t_string		g_messages[19];
 void			check_for_file(t_string file_name);
 void			draw_img(t_image img);
 t_image			new_img(t_string	path);
@@ -355,6 +357,7 @@ t_image			load_image(int i, t_string path, int type);
 int				is_out_of_window(t_vector a);
 int				shadow(int color, float distance);
 void			sort_sprites();
+void			handle_error2(t_string output, int status);
 void			show_sprites();
 void			update_sprites();
 void			*sf_malloc(size_t size);
@@ -371,13 +374,13 @@ void			read_image(t_string line, int index);
 void			read_resolution(t_string line);
 void			validate_args(t_string **args, int nargs, int signal);
 void			check_for_info(t_string line);
-int				is_info_full();
+t_string		is_info_full(void);
 void			read_file(t_string file_name);
 void			get_player_pos(int col, int row, char c);
 void			get_rows_cols(t_string file_name);
 void			check_closed_map();
 void			allocate_map();
-void			fill_map(int fd, t_string line, int j);
+void			fill_map(int fd, t_string line, int j, int f);
 int				is_secret_door(t_vector coordinate);
 void			draw_hud();
 int				create_coins_count(int c, int len_nbr,

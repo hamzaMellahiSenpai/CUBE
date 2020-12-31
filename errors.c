@@ -12,6 +12,20 @@
 
 #include "header.h"
 
+void		init_infos(void)
+{
+	g_infos_names[0] = "north_texture";
+	g_infos_names[1] = "south_texture";
+	g_infos_names[2] = "east_texture";
+	g_infos_names[3] = "west_texture";
+	g_infos_names[4] = "sprite_texture";
+	g_infos_names[5] = "resolution";
+	g_infos_names[6] = "floor_color";
+	g_infos_names[7] = "ceil_color";
+	g_infos_names[8] = "map";
+	g_infos_names[9] = "player_position";
+}
+
 void		init_errors(void)
 {
 	g_messages[0] = "Invalid file name!";
@@ -32,6 +46,8 @@ void		init_errors(void)
 	g_messages[15] = "INVALID COLORS";
 	g_messages[16] = "DUPLICATE_SPRITE";
 	g_messages[17] = "CANNOT CREATE SUBPROCESS";
+	g_messages[18] = "NOT VALID NUMBER OF ARGS";
+	init_infos();
 }
 
 void		handle_error(int error_index, int status)
@@ -39,6 +55,12 @@ void		handle_error(int error_index, int status)
 	t_string output;
 
 	output = ft_strjoin("Error\n", g_messages[error_index], 2);
+	write(1, output, ft_strlen(output));
+	free_all(status);
+}
+
+void		handle_error2(t_string output, int status)
+{
 	write(1, output, ft_strlen(output));
 	free_all(status);
 }

@@ -20,7 +20,7 @@ void	init_world(void)
 	g_world.player.walk_direction = 0;
 	g_world.player.turn_direction = 0;
 	g_world.player.rotation.speed = 5 * 0.0174533;
-	g_world.player.speed = 40;
+	g_world.player.speed = 15;
 	g_world.player.offset = 0;
 	g_world.player.coins = 100;
 	g_world.player.maxlives = 3;
@@ -106,11 +106,9 @@ int		update(int key)
 
 int		main(int ac, char **av)
 {
+	init_errors();
 	if (ac == 1)
-	{
-		perror("Error\nNOT VALID NUMBER OF ARGS ;)");
-		exit(FAIL);
-	}
+		handle_error(NOT_VALID_ARGS, FAIL);
 	g_window = NULL;
 	g_img.img = NULL;
 	g_world.numofsprites = 0;
