@@ -111,6 +111,8 @@ int		main(int ac, char **av)
 		perror("Error\nNOT VALID NUMBER OF ARGS ;)");
 		exit(FAIL);
 	}
+	g_window = NULL;
+	g_img.img = NULL;
 	g_world.numofsprites = 0;
 	g_world.player.rotation.angle = M_PI;
 	g_infos[9] = 0;

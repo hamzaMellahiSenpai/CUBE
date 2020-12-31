@@ -29,8 +29,10 @@ void	free_all(int status)
 	if (g_world.is_bc_music_played)
 		system(ft_strjoin("kill ", ft_itoa(g_world.bc_music_pid), 2));
 	deletelist(&g_world.adresses);
-	mlx_destroy_image(g_mlx, g_img.img);
-	mlx_destroy_window(g_mlx, g_window);
+	if (g_img.img != NULL)
+		mlx_destroy_image(g_mlx, g_img.img);
+	if (g_window != NULL)
+		mlx_destroy_window(g_mlx, g_window);
 	exit(status);
 }
 

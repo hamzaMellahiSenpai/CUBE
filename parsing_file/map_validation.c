@@ -77,7 +77,9 @@ void	check_closed_map(void)
 					g_world.map[j][i - 1] == ' ' ||
 					g_world.map[j + 1][i] == ' ' ||
 					g_world.map[j - 1][i] == ' ')
+				{
 					return (handle_error(INVALID_MAP, FAIL));
+				}
 	}
 	if (!is_info_full())
 		return (handle_error(MISSING_INFO, FAIL));
@@ -123,7 +125,7 @@ void	get_rows_cols(t_string file_name)
 			g_world.sprites_count++;
 		else if (*tmp != '\0' && map_end == 1)
 			return (handle_error(INVALID_MAP, FAIL));
-		else if ((*tmp == '1' || (*line != 0 && *tmp == '\0'))
+		else if ((*tmp == '1' || (*line != 0 && *tmp == '\0' && g_infos[map]))
 		&& g_world.rows++)
 			update_col_name(line);
 		else if (*line == '\0' && g_infos[map] == 1 && map_end == 0)
