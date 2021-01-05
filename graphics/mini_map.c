@@ -44,7 +44,7 @@ void	draw_mini_map(void)
 
 	if (g_world.show_mini_map == 1)
 		return ;
-	i = 0;
+	i = -1;
 	while (++i < g_world.rows - 1)
 	{
 		j = -1;

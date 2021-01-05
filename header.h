@@ -121,7 +121,7 @@ typedef	struct	s_pair
 
 typedef	struct	s_shape
 {
-	int		width;
+	const int		width;
 	int		height;
 }				t_shape;
 

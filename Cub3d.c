@@ -96,7 +96,7 @@ int		update(int key)
 	update_field_of_view();
 	render_walls();
 	show_sprites();
-	// if (BONUS)
+	if (BONUS)
 		do_bonus_part();
 	mlx_put_image_to_window(g_mlx, g_window, g_img.img, 0, 0);
 	background(0);
@@ -104,6 +104,22 @@ int		update(int key)
 	return (0);
 }
 
+void	check_for_screenshoot(int ac, char **av)
+{
+	if (ac == 3)
+	{
+		if (ft_strcmp(av[2], "--save") == 0)
+		{
+			save_first_frame_in_bmp_file();
+			free_all(UNCOMPLETED);
+		}
+		else
+		{
+			t_string error = ft_strjoin("INVALID ARG ", av[2], 2);
+			handle_error2(error, FAIL);
+		}
+	}
+}
 int		main(int ac, char **av)
 {
 	init_errors();
@@ -117,11 +133,7 @@ int		main(int ac, char **av)
 	g_mlx = mlx_init();
 	read_file(av[1]);
 	setup();
-	if (ac == 3 && ft_strcmp(av[2], "--save") == 0)
-	{
-		save_first_frame_in_bmp_file();
-		free_all(UNCOMPLETED);
-	}
+	check_for_screenshoot(ac, av);
 	mlx_loop_hook(g_mlx, update, (void*)0);
 	if (BONUS)
 		mlx_hook(g_window, 6, 0, mouse, (void*)0);

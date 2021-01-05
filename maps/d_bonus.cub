@@ -1,8 +1,8 @@
-R  1000 1000
-NO ./assets/textures/1375EA.xpm
-SO ./assets/textures/1375SO.xpm
-WE ./assets/textures/1375WE.xpm
-EA ./assets/textures/1375WE.xpm
+R  17000 17000
+NO    ./texture/mossy.xpm     
+SO         ./texture/greystone.xpm   
+EA ./texture/bluestone.xpm
+WE      ./texture/redbrick.xpm    
   
 F  200,200,200
 C  0,  191,255

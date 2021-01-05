@@ -70,7 +70,7 @@ void	render_texture(t_image texture, int wall_height, int col, t_ray ray)
 	* texture.width / BLOCK_SIZE :
 	fmod(ray.wall_hit.y, BLOCK_SIZE);
 	f = 0;
-	while (y < limit)
+	while (y < (limit))
 	{
 		if ((int)texture.x < texture.width && (int)f < texture.height
 		&& (int)texture.x >= 0 && (int)f >= 0)

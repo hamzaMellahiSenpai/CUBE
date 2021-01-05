@@ -59,8 +59,11 @@ void		handle_error(int error_index, int status)
 	free_all(status);
 }
 
-void		handle_error2(t_string output, int status)
+void		handle_error2(t_string error, int status)
 {
+	t_string output;
+
+	output = ft_strjoin("Error\n", error, 2);
 	write(1, output, ft_strlen(output));
 	free_all(status);
 }

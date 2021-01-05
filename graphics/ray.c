@@ -31,8 +31,8 @@ t_vector	get_horizontal_intersection(t_ray ray, int *hor_found)
 	t_vector	a;
 	t_vector	step;
 
-	a.y = floor(PLAYERPOS.y / BLOCK_SIZE) * BLOCK_SIZE;
-	a.y += ray.is_facing_down ? BLOCK_SIZE : -0.01;
+	a.y = (int)(PLAYERPOS.y / BLOCK_SIZE) * BLOCK_SIZE;
+	a.y += ray.is_facing_down ? BLOCK_SIZE : -0.001;
 	a.x = (a.y - PLAYERPOS.y) / tan(ray.angle) + PLAYERPOS.x;
 	step.y = BLOCK_SIZE;
 	step.y *= ray.is_facing_up ? -1 : 1;
@@ -56,8 +56,8 @@ t_vector	get_vertical_intersection(t_ray ray, int *ver_found)
 	t_vector	b;
 	t_vector	step;
 
-	b.x = floor(PLAYERPOS.x / BLOCK_SIZE) * BLOCK_SIZE;
-	b.x += ray.is_facing_right ? BLOCK_SIZE : -0.01;
+	b.x = (int)(PLAYERPOS.x / BLOCK_SIZE) * BLOCK_SIZE;
+	b.x += ray.is_facing_right ? BLOCK_SIZE : -0.001;
 	b.y = PLAYERPOS.y + tan(ray.angle) * (b.x - PLAYERPOS.x);
 	step.x = BLOCK_SIZE;
 	step.x *= ray.is_facing_left ? -1 : 1;

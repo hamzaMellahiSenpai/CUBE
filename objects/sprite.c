@@ -125,6 +125,7 @@ void	show_sprites(void)
 			sprite.s_y = (SHEIGHT - sprite.size) / 2 + g_world.player.offset;
 			sprite.s_x = (angle - PROTATIONANGLE) * (SWIDTH / VIEW_ANGLE)
 			+ (SWIDTH / 2 - sprite.size / 2);
+			sprite.size *= 1.15;
 			render_sprite(sprite);
 		}
 }
