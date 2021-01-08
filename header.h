@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 01:08:43 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/31 00:55:54 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/08 16:58:03 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,10 @@
 # include <fcntl.h>
 # include <pthread.h>
 # include <signal.h>
-# define SWIDTH g_screen.width
-# define SHEIGHT g_screen.height
-# define VIEW_ANGLE (float)1.0472
 # define WALL 1
 # define RED 0XFF0000
 # define BUFFER_SIZE 1
-# define PP g_world.player.position
-# define WALKDIRECTION g_world.player.walk_direction
-# define TURNDIRECTION g_world.player.turn_direction
-# define PROTATIONSPEED g_world.player.rotation.speed
-# define PROTATIONANGLE g_world.player.rotation.angle
-# define PLAYERNAME g_world.player.name
-# define PLAYERPOS g_world.player.position
-# define PLAYERPOSINMMAP g_world.player.pos_in_map
-# define PLAYERH g_world.player.height
-# define MIN(a,b) (((a)<(b))?(a):(b))
-# define MAX(a,b) (((a)>(b))?(a):(b))
 # define BLOCK_SIZE 64
-# define PLAYERRJ g_world.player.rj
-# define MINIMAP_SCALE SWIDTH * 0.00009
-# define DEG(x) x * 180 / M_PI
 
 enum			e_states
 {
@@ -121,7 +104,7 @@ typedef	struct	s_pair
 
 typedef	struct	s_shape
 {
-	const int		width;
+	int		width;
 	int		height;
 }				t_shape;
 
@@ -262,6 +245,8 @@ typedef struct	s_world
 	t_image				coins_count_img;
 	t_image				hearts_img;
 	char				*valid_chars_in_map;
+	float				minimap_scale;
+	float				view_angle;
 }				t_world;
 
 typedef	struct	s_texture
@@ -394,4 +379,8 @@ void			do_bonus_part();
 int				exit_hook(void);
 void			line(float x0, float y0, float x1, float y1);
 int				object_at(t_vector coordinate);
+void			check_for_screenshoot(int ac, char **av);
+float			min(float a, float b);
+float			max(float a, float b);
+void			handle_sprite(int i);
 #endif

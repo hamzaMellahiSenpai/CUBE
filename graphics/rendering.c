@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 03:18:48 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/31 01:00:32 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/08 16:55:14 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void	render_walls(void)
 	while (++col < g_screen.width)
 	{
 		ray = g_world.wall_rays[col];
-		ray.distance = ray.distance * cos(ray.angle - PROTATIONANGLE);
+		ray.distance = ray.distance *
+		cos(ray.angle - g_world.player.rotation.angle);
 		wall_height = (BLOCK_SIZE / ray.distance) *
-		(g_screen.width / 2) / tan(VIEW_ANGLE / 2);
+		(g_screen.width / 2) / tan(g_world.view_angle / 2);
 		sky_height = g_world.player.offset +
 		(g_screen.height - (float)wall_height) / 2;
 		direct_line(col, 0, sky_height, g_world.colors[skybox]);
@@ -63,12 +64,12 @@ void	render_texture(t_image texture, int wall_height, int col, t_ray ray)
 	float	y;
 	int		pixel;
 
-	limit = wall_height + (SHEIGHT - wall_height) / 2 + g_world.player.offset;
+	limit = wall_height + (g_screen.height - wall_height)
+	/ 2 + g_world.player.offset;
 	y = (g_screen.height - (float)wall_height) / 2 + g_world.player.offset;
 	texture.stepy = (float)texture.height / (float)wall_height;
 	texture.x = ray.is_hor_hit ? fmod(ray.wall_hit.x, BLOCK_SIZE)
-	* texture.width / BLOCK_SIZE :
-	fmod(ray.wall_hit.y, BLOCK_SIZE);
+	* texture.width / BLOCK_SIZE : fmod(ray.wall_hit.y, BLOCK_SIZE);
 	f = 0;
 	while (y < (limit))
 	{

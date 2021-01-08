@@ -69,12 +69,12 @@ int		mouse(int x, int y)
 {
 	if (!is_out_of_window(new_vector(x, y)))
 	{
-		if ((x >= SWIDTH - 30) && x < SWIDTH)
-			TURNDIRECTION = 1;
+		if ((x >= g_screen.width - 30) && x < g_screen.width)
+			g_world.player.turn_direction = 1;
 		else if ((x <= 30) && x > 0)
-			TURNDIRECTION = -1;
+			g_world.player.turn_direction = -1;
 		else
-			TURNDIRECTION = 0;
+			g_world.player.turn_direction = 0;
 	}
 	return (1);
 }

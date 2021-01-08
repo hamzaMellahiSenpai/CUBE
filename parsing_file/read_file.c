@@ -35,11 +35,11 @@ void	put_sprites_in_map(void)
 
 void	setrotationangle(void)
 {
-	if (PLAYERNAME == 'N')
+	if (g_world.player.name == 'N')
 		g_world.player.rotation.angle = -M_PI / 2;
-	else if (PLAYERNAME == 'S')
+	else if (g_world.player.name == 'S')
 		g_world.player.rotation.angle = M_PI / 2;
-	else if (PLAYERNAME == 'E')
+	else if (g_world.player.name == 'E')
 		g_world.player.rotation.angle = 0;
 }
 
@@ -56,9 +56,10 @@ void	get_player_pos(int col, int row, char c)
 				return (handle_error(DUPLICATE_PLAYER, FAIL));
 			else
 			{
-				PLAYERPOS = new_vector(BLOCK_SIZE * col + BLOCK_SIZE / 2,
+				g_world.player.position =
+				new_vector(BLOCK_SIZE * col + BLOCK_SIZE / 2,
 						BLOCK_SIZE * row + BLOCK_SIZE / 2);
-				PLAYERNAME = *str;
+				g_world.player.name = *str;
 				setrotationangle();
 			}
 		}

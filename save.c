@@ -14,6 +14,25 @@
 
 extern int *g_p;
 
+void	check_for_screenshoot(int ac, char **av)
+{
+	t_string	error;
+
+	if (ac == 3)
+	{
+		if (ft_strcmp(av[2], "--save") == 0)
+		{
+			save_first_frame_in_bmp_file();
+			free_all(UNCOMPLETED);
+		}
+		else
+		{
+			error = ft_strjoin("INVALID ARG ", av[2], 2);
+			handle_error2(error, FAIL);
+		}
+	}
+}
+
 void	fill_header(unsigned char **header, int imagesize)
 {
 	u_int16_t bitcount;
@@ -32,8 +51,8 @@ void	fill_header(unsigned char **header, int imagesize)
 	ft_memcpy(*header + 2, &filesize, 4);
 	ft_memcpy(*header + 10, &bfoffbits, 4);
 	ft_memcpy(*header + 14, &bisize, 4);
-	ft_memcpy(*header + 18, &SWIDTH, 4);
-	ft_memcpy(*header + 22, &SHEIGHT, 4);
+	ft_memcpy(*header + 18, &g_screen.width, 4);
+	ft_memcpy(*header + 22, &g_screen.height, 4);
 	ft_memcpy(*header + 26, &biplanes, 2);
 	ft_memcpy(*header + 28, &bitcount, 2);
 	ft_memcpy(*header + 34, &imagesize, 4);
@@ -47,15 +66,15 @@ void	fill_buf(unsigned char **buf, int width_in_bytes)
 	int i;
 	int	j;
 
-	row = SHEIGHT;
+	row = g_screen.height;
 	i = 0;
 	while (--row > 0)
 	{
 		col = 0;
 		j = 0;
-		while (++col < SWIDTH)
+		while (++col < g_screen.width)
 		{
-			color = g_p[(row * SWIDTH) + col];
+			color = g_p[(row * g_screen.width) + col];
 			(*buf)[i * width_in_bytes + j * 3 + 0] = color & 0xff;
 			(*buf)[i * width_in_bytes + j * 3 + 1] = ((color >> 8) & 0xff);
 			(*buf)[i * width_in_bytes + j * 3 + 2] = ((color >> 16) & 0xff);
@@ -73,8 +92,8 @@ void	save_first_frame_in_bmp_file(void)
 	int				fd;
 	unsigned char	*header;
 
-	width_in_bytes = ((SWIDTH * 24 + 31) / 32) * 4;
-	imagesize = width_in_bytes * SHEIGHT;
+	width_in_bytes = ((g_screen.width * 24 + 31) / 32) * 4;
+	imagesize = width_in_bytes * g_screen.height;
 	header = (unsigned char *)sf_malloc((unsigned char)imagesize);
 	fill_header(&header, imagesize);
 	buf = sf_malloc(imagesize);

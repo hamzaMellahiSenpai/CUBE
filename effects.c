@@ -59,3 +59,13 @@ int		look_for_sp(int x, int y)
 			return (i);
 	return (-1);
 }
+
+float	min(float a, float b)
+{
+	return (a < b ? a : b);
+}
+
+float	max(float a, float b)
+{
+	return (a < b ? a : b);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:33:35 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/30 08:52:23 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/08 16:56:38 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		can_walk_on_object(t_vector coordinate)
 	else if (g_world.map[y][x] == 'H')
 	{
 		destroy(x, y);
-		g_world.player.lives = MIN(g_world.player.lives + 1,
+		g_world.player.lives = min(g_world.player.lives + 1,
 		g_world.player.maxlives);
 		can_walk_on = 1;
 	}
@@ -67,21 +67,21 @@ void	update_player(void)
 	n_p_rotation = g_world.player.rotation.angle;
 	if (g_world.player.rj != 0)
 	{
-		step.x = player_speed * cos(n_p_rotation - M_PI / 2) * PLAYERRJ;
-		step.y = player_speed * sin(n_p_rotation - M_PI / 2) * PLAYERRJ;
+		step.x = player_speed * cos(n_p_rotation - M_PI / 2) *  g_world.player.rj;
+		step.y = player_speed * sin(n_p_rotation - M_PI / 2) *  g_world.player.rj;
 	}
 	else
 	{
-		step.x = player_speed * cos(n_p_rotation) * WALKDIRECTION;
-		step.y = player_speed * sin(n_p_rotation) * WALKDIRECTION;
+		step.x = player_speed * cos(n_p_rotation) * g_world.player.walk_direction;
+		step.y = player_speed * sin(n_p_rotation) * g_world.player.walk_direction;
 	}
-	n_p_position = add_vectors(PLAYERPOS, step);
-	n_p_rotation = norm_angle(n_p_rotation + TURNDIRECTION * PROTATIONSPEED);
+	n_p_position = add_vectors(g_world.player.position, step);
+	n_p_rotation = norm_angle(n_p_rotation + g_world.player.turn_direction * g_world.player.rotation.speed);
 	g_world.player.rotation.angle = n_p_rotation;
-	collision = add_vectors(PLAYERPOS, multi_vector_to_n(step, 2));
+	collision = add_vectors(g_world.player.position, multi_vector_to_n(step, 2));
 	if ((!BONUS && !wall_at(collision)) || is_secret_door(collision) ||
 		(can_walk_on_object(n_p_position) && !wall_at(collision)))
-		PLAYERPOS = n_p_position;
+		g_world.player.position = n_p_position;
 }
 
 int		is_secret_door(t_vector coordinate)

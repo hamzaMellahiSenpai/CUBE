@@ -20,11 +20,11 @@ void	raycast_2d(int i, int j)
 	t_vector	b;
 
 	col = -1;
-	a = multi_vector_to_n(PLAYERPOS, MINIMAP_SCALE);
+	a = multi_vector_to_n(g_world.player.position, g_world.minimap_scale);
 	while (++col < g_screen.width)
 	{
 		ray = g_world.wall_rays[col];
-		b = multi_vector_to_n(ray.wall_hit, MINIMAP_SCALE);
+		b = multi_vector_to_n(ray.wall_hit, g_world.minimap_scale);
 		line(a.x, a.y, b.x, b.y);
 	}
 	i = -1;
@@ -33,7 +33,7 @@ void	raycast_2d(int i, int j)
 		j = -1;
 		while (++j < g_world.cols - 1)
 			if (!ft_strchr("0SWEN12 ", g_world.map[i][j]))
-				draw_square(i, j, BLOCK_SIZE * MINIMAP_SCALE, 0x008000);
+				draw_square(i, j, BLOCK_SIZE * g_world.minimap_scale, 0x008000);
 	}
 }
 
@@ -51,9 +51,9 @@ void	draw_mini_map(void)
 		while (++j < g_world.cols - 1)
 		{
 			if (ft_strchr("12", g_world.map[i][j]))
-				draw_square(i, j, BLOCK_SIZE * MINIMAP_SCALE, 0xFFFFFF);
+				draw_square(i, j, BLOCK_SIZE * g_world.minimap_scale, 0xFFFFFF);
 			else if (ft_strchr("0SWEN", g_world.map[i][j]))
-				draw_square(i, j, BLOCK_SIZE * MINIMAP_SCALE, 0);
+				draw_square(i, j, BLOCK_SIZE * g_world.minimap_scale, 0);
 		}
 	}
 	raycast_2d(i, j);

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "__node_handle": "cpp",
+        "algorithm": "cpp",
+        "complex": "c"
+    }
+}

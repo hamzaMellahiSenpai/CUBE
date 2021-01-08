@@ -27,8 +27,8 @@ void			update_field_of_view(void)
 	float		ray_angle;
 	float		step;
 
-	ray_angle = (g_world.player.rotation.angle - VIEW_ANGLE / 2);
-	step = (float)VIEW_ANGLE / (float)g_screen.width;
+	ray_angle = (g_world.player.rotation.angle - g_world.view_angle / 2);
+	step = (float)g_world.view_angle / (float)g_screen.width;
 	ray = new_ray(ray_angle);
 	col = 0;
 	while (col <= g_screen.width)

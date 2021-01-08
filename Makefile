@@ -6,7 +6,7 @@
 #    By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 23:25:02 by hmellahi          #+#    #+#              #
-#    Updated: 2020/10/31 01:32:54 by hmellahi         ###   ########.fr        #
+#    Updated: 2021/01/08 16:58:30 by hmellahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SRC = 	cub3D.c                         graphics/hud.c                  graphics/
 		effects.c                       graphics/mini_map.c             includes/ft_split.c             includes/get_next_line.c    \
 		objects/player.c                parsing_file/read_file.c        save.c        errors.c                                  \
 		graphics/ray.c                  includes/func_utils.c           includes/lst.c                  objects/sprite.c       \
-		parsing_file/reading_infos.c    ui.c  events_handler.c                graphics/rendering.c          \
-		includes/func_utils2.c          includes/sf_malloc.c            parsing_file/loading_assets.c   parsing_file/validiting_infos.c
+		parsing_file/reading_infos.c    ui.c  events_handler.c                graphics/rendering.c      objects/helpers.c \
+		includes/func_utils2.c          includes/sf_malloc.c            parsing_file/loading_assets.c   parsing_file/validiting_infos.c 
 CC  = @gcc
 MLX = -lmlx -framework OpenGL -framework AppKit -g
 NAME = cub3D

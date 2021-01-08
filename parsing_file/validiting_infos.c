@@ -66,6 +66,6 @@ t_string	is_info_full(void)
 
 void		update_col_name(t_string line)
 {
-	g_world.cols = MAX((int)ft_strlen(line), g_world.cols);
+	g_world.cols = max((int)ft_strlen(line), g_world.cols);
 	g_infos[map] = 1;
 }

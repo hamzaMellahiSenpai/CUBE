@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:33:22 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/31 01:12:27 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/08 16:53:55 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ t_vector	get_horizontal_intersection(t_ray ray, int *hor_found)
 	t_vector	a;
 	t_vector	step;
 
-	a.y = (int)(PLAYERPOS.y / BLOCK_SIZE) * BLOCK_SIZE;
+	a.y = (int)(g_world.player.position.y / BLOCK_SIZE) * BLOCK_SIZE;
 	a.y += ray.is_facing_down ? BLOCK_SIZE : -0.001;
-	a.x = (a.y - PLAYERPOS.y) / tan(ray.angle) + PLAYERPOS.x;
+	a.x = (a.y - g_world.player.position.y)
+	/ tan(ray.angle) + g_world.player.position.x;
 	step.y = BLOCK_SIZE;
 	step.y *= ray.is_facing_up ? -1 : 1;
 	step.x = BLOCK_SIZE / tan(ray.angle);
@@ -56,9 +57,10 @@ t_vector	get_vertical_intersection(t_ray ray, int *ver_found)
 	t_vector	b;
 	t_vector	step;
 
-	b.x = (int)(PLAYERPOS.x / BLOCK_SIZE) * BLOCK_SIZE;
+	b.x = (int)(g_world.player.position.x / BLOCK_SIZE) * BLOCK_SIZE;
 	b.x += ray.is_facing_right ? BLOCK_SIZE : -0.001;
-	b.y = PLAYERPOS.y + tan(ray.angle) * (b.x - PLAYERPOS.x);
+	b.y = g_world.player.position.y + tan(ray.angle)
+	* (b.x - g_world.player.position.x);
 	step.x = BLOCK_SIZE;
 	step.x *= ray.is_facing_left ? -1 : 1;
 	step.y = BLOCK_SIZE * tan(ray.angle);
@@ -99,8 +101,8 @@ void		cast(t_ray *ray)
 {
 	t_vector	a;
 	t_vector	b;
-	float		hor_hit_distance;
-	float		ver_hit_distance;
+	float		hor_hit_dist;
+	float		ver_hit_dist;
 
 	ray->is_hor_hit = 1;
 	ray->is_facing_right = (ray->angle < (M_PI / 2))
@@ -111,10 +113,11 @@ void		cast(t_ray *ray)
 	ray->hor_found = 0;
 	ray->ver_found = 0;
 	a = get_horizontal_intersection(*ray, &ray->hor_found);
-	b = get_vertical_intersection(*ray, &ray->ver_found);
-	hor_hit_distance = ray->hor_found ? dist(a, PLAYERPOS) : 90000000;
-	ver_hit_distance = ray->ver_found ? dist(b, PLAYERPOS) : 90000000;
-	if (hor_hit_distance > ver_hit_distance)
+	b = get_vertical_intersection(*ray,
+	&ray->ver_found);
+	hor_hit_dist = ray->hor_found ? dist(a, g_world.player.position) : 900000;
+	ver_hit_dist = ray->ver_found ? dist(b, g_world.player.position) : 900000;
+	if (hor_hit_dist > ver_hit_dist)
 	{
 		ray->is_hor_hit = 0;
 		a = b;

@@ -35,6 +35,8 @@ void	init_world(void)
 	g_world.hearts_img = new_img("hearts.xpm");
 	g_world.valid_chars_in_map = ft_strdup(BONUS ? "10NWSE D" : "10NWSE 2");
 	g_is_keypressed = 0;
+	g_world.minimap_scale = g_screen.width * 0.00009;
+	g_world.view_angle = (float)1.0472;
 }
 
 t_image	new_img(t_string path)
@@ -42,7 +44,7 @@ t_image	new_img(t_string path)
 	t_image img;
 
 	img = load_image(4, ft_strjoin("assets/textures/", path, 2), TEXTURE);
-	img.size = new_vector(SWIDTH, SHEIGHT);
+	img.size = new_vector(g_screen.width, g_screen.height);
 	img.path = path;
 	img.x = 0;
 	img.y = 0;
@@ -104,22 +106,6 @@ int		update(int key)
 	return (0);
 }
 
-void	check_for_screenshoot(int ac, char **av)
-{
-	if (ac == 3)
-	{
-		if (ft_strcmp(av[2], "--save") == 0)
-		{
-			save_first_frame_in_bmp_file();
-			free_all(UNCOMPLETED);
-		}
-		else
-		{
-			t_string error = ft_strjoin("INVALID ARG ", av[2], 2);
-			handle_error2(error, FAIL);
-		}
-	}
-}
 int		main(int ac, char **av)
 {
 	init_errors();
