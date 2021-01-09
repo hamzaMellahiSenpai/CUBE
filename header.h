@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 01:08:43 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/08 16:58:03 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:23:04 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,7 @@ void			check_for_file(t_string file_name);
 void			draw_img(t_image img);
 t_image			new_img(t_string	path);
 t_vector		new_vector(float x, float y);
+int				get_count(t_string str, char c);
 void			add_to_vector(t_vector *a, t_vector *b);
 t_vector		add_vectors(t_vector a, t_vector b);
 t_vector		multi_vector_to_n(t_vector a, float b);
@@ -288,6 +289,7 @@ void			render_texture(t_image texture, int wall_height,
 void			render_sprite(t_sprite sprite);
 float			dist(t_vector a, t_vector b);
 void			save_first_frame_in_bmp_file();
+void			update_player_pos(t_vector *step);
 int				tablen(void **tab);
 void			update_col_name(t_string line);
 int				handle_input(int key, void *p);

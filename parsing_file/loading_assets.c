@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:21 by marvin            #+#    #+#             */
-/*   Updated: 2020/10/31 03:09:41 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:36:35 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,20 @@ void	load_texture(t_string line, int index)
 	load_image(index, path, TEXTURE);
 }
 
-void	setup_bns_sprite(t_sprite *sp, char **tab2, char **tab)
+void	setup_bns_sprite(t_sprite *sp, char **tab2, char **tab, t_string line)
 {
 	t_animation	anim;
 	t_vector	pm;
 	t_string	*x;
 
+	if (get_count(line, '|') != 6)
+	{
+		return (handle_error2("Invalid sprite args number valid format"
+				":\nx|y|is_animated_bool|n_of_parts|fps|escaped_clr", FAIL));
+	}
 	sp->type = strlen(tab2[0]) == 2 ? tab2[0][1] : 'P';
 	x = tab + 1;
-	validate_args(&x, 6, INVALID_SPRITE_ARG);
+	validate_args(&x, 6, Allocation_Failed);
 	anim.is_play_on_awake = ft_atoi(tab[3]);
 	anim.nofframes = ft_atoi(tab[4]);
 	anim.fps = ft_atoi(tab[5]);
@@ -100,7 +105,7 @@ void	load_sprite(t_string line)
 	if (!BONUS)
 		setup_sprite(&sprite);
 	else
-		setup_bns_sprite(&sprite, tab2, tab);
+		setup_bns_sprite(&sprite, tab2, tab, line);
 	sprite.visible = 1;
 	g_world.numofsprites++;
 	g_world.sprites[g_world.numofsprites - 1] = sprite;

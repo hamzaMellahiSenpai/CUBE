@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 09:51:10 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/29 05:37:19 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:08:55 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void		init_errors(void)
 	g_messages[5] = "Stop Idiot! You have reached the range of g_screen";
 	g_messages[6] = "Invalid Map";
 	g_messages[7] = "NO SUCH FILE OR DIRECTORY";
-	g_messages[8] = "Allocation Failed";
+	g_messages[8] = "Invalid sprite args format valid format\
+	:\nx|y|is_animated_bool|n_of_parts|fps|escaped_clr";
 	g_messages[9] = "PROCCESS_CANT_BE_CREATED";
 	g_messages[10] = "INVALID_PATH";
 	g_messages[11] = "INVALID_SPRITE_PLACEMENT";

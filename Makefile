@@ -6,13 +6,13 @@
 #    By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 23:25:02 by hmellahi          #+#    #+#              #
-#    Updated: 2021/01/08 16:58:30 by hmellahi         ###   ########.fr        #
+#    Updated: 2021/01/09 18:25:22 by hmellahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Wextra -Werror
 ARG = -c
-SRC = 	cub3D.c                         graphics/hud.c                  graphics/vector.c               includes/func_utils3.c   \
+SRC = 	cub3d.c                         graphics/hud.c                  graphics/vector.c               includes/func_utils3.c   \
 	  	maths.c                         parsing_file/map_validation.c   play_music.c \
 		effects.c                       graphics/mini_map.c             includes/ft_split.c             includes/get_next_line.c    \
 		objects/player.c                parsing_file/read_file.c        save.c        errors.c                                  \

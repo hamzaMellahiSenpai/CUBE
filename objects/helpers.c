@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_sprite.c                                    :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 16:46:35 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/08 16:46:43 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:24:46 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,27 @@ void	handle_sprite(int i)
 	+ (g_screen.width / 2 - sprite.size / 2);
 	sprite.size *= 1.15;
 	render_sprite(sprite);
+}
+
+void	update_player_pos(t_vector *step)
+{
+	float		n_p_rotation;
+	float		player_speed;
+
+	player_speed = g_world.player.speed;
+	n_p_rotation = g_world.player.rotation.angle;
+	if (g_world.player.rj != 0)
+	{
+		step->x = player_speed *
+		cos(n_p_rotation - M_PI / 2) * g_world.player.rj;
+		step->y = player_speed *
+		sin(n_p_rotation - M_PI / 2) * g_world.player.rj;
+	}
+	else
+	{
+		step->x = player_speed * cos(n_p_rotation)
+		* g_world.player.walk_direction;
+		step->y = player_speed * sin(n_p_rotation)
+		* g_world.player.walk_direction;
+	}
 }

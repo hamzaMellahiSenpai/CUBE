@@ -1,9 +1,9 @@
 R 1800 1800
 
- NO    ./texture/mossy.xpm     
-SO         ./texture/greystone.xpm   
-EA ./texture/bluestone.xpm
-WE      ./texture/redbrick.xpm    
+NO ./assets/textures/1375EA.xpm
+SO ./assets/textures/1375SO.xpm
+WE ./assets/textures/1375WE.xpm
+EA ./assets/textures/1375WE.xpm   
   F   200,200,   200
   C    0,191,255
    

@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 02:12:08 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/30 03:18:38 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:00:51 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ float	min(float a, float b)
 
 float	max(float a, float b)
 {
-	return (a < b ? a : b);
+	return (a > b ? a : b);
 }
