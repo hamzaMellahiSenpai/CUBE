@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 03:18:48 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/09 18:16:54 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/11 19:36:40 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	render_texture(t_image texture, int wall_height, int col, t_ray ray)
 	texture.stepy = (float)texture.height / (float)wall_height;
 	texture.x = ray.is_hor_hit ? fmod(ray.wall_hit.x, BLOCK_SIZE)
 	* texture.width / BLOCK_SIZE : fmod(ray.wall_hit.y, BLOCK_SIZE);
-	// y = max(y, 0);
-	// limit = min(limit, g_screen.height);
 	f = 0;
 	while (y < (limit))
 	{

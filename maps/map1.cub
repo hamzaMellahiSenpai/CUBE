@@ -1,8 +1,8 @@
+NO ./assets/textures/1375EA.xpm
+SO ./assets/textures/1375SO.xpm
+WE ./assets/textures/1375WE.xpm
+EA ./assets/textures/   13 75NO ds
 
-NO      texture/mossy.xpm
-SO ./texture/bluestone.xpm
-WE ./texture/greystone.xpm
-EA ./texture/redbrick.xpm
 S assets/sprites/barrel.xpm
   C  153,204,255
 R    1200 900
