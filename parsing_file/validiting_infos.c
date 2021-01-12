@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:16 by marvin            #+#    #+#             */
-/*   Updated: 2020/10/30 06:08:32 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/12 19:15:29 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_string	is_info_full(void)
 	int i;
 
 	i = -1;
-	while (++i <= 9)
+	while (++i <= 8)
 		if (g_infos[i] == 0)
 			return (g_infos_names[i]);
 	return (NULL);

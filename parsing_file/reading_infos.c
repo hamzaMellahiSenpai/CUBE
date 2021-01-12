@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:11 by marvin            #+#    #+#             */
-/*   Updated: 2020/10/31 01:18:06 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/12 19:27:38 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,15 @@ void	read_color(t_string line, int index, int space)
 	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
 		return (handle_error(INVALID_COLORS, FAIL));
 	g_world.colors[space] = rgb_to_int(r, g, b);
+}
+
+void	do_ur_thing(int *flag, t_string line, int i, int j)
+{
+	*flag = 1;
+	while (++i < g_world.cols && i < ft_strlen(line))
+	{
+		get_player_pos(i, j, line[i]);
+		g_world.map[j][i] = line[i];
+		get_sprite_pos(i, j);
+	}
 }

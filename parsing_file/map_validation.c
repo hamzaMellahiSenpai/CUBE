@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 04:43:34 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/31 01:27:35 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/12 19:27:11 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,9 @@ void	fill_map(int fd, t_string line, int j, int flag)
 		if ((trim(line, " \t")[0] == '1' ||
 		(trim(line, " \t")[0] == 0 && flag == 1)) && ((i = -1) || 1))
 		{
-			flag = 1;
-			while (++i < g_world.cols && i < ft_strlen(line))
-			{
-				get_player_pos(i, j, line[i]);
-				g_world.map[j][i] = line[i];
-				get_sprite_pos(i, j);
-			}
+			if (is_info_full())
+				handle_error2(ft_strjoin("MISSING ", is_info_full(), 2), FAIL);
+			do_ur_thing(&flag, line, i, j);
 			j++;
 		}
 		else if (!flag)

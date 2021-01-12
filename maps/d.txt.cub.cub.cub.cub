@@ -7,7 +7,6 @@ EA ./assets/textures/1375WE.xpm
   F   200,200,   200
   C    0,191,255
    
-      S       ./assets/sprites/coin .xpm
    
         1111111111111111111111111
         1000000000110000000000001

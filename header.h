@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 01:08:43 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/09 18:23:04 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/12 19:28:08 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,6 +366,8 @@ void			read_file(t_string file_name);
 void			get_player_pos(int col, int row, char c);
 void			get_rows_cols(t_string file_name);
 void			check_closed_map();
+void			do_ur_thing(int *flag, t_string line, int i, int j);
+void			get_sprite_pos(int x, int y);
 void			allocate_map();
 void			fill_map(int fd, t_string line, int j, int f);
 int				is_secret_door(t_vector coordinate);
