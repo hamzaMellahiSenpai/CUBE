@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:33:35 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/11 19:28:04 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/12 16:39:17 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	update_player(void)
 	n_p_rotation = norm_angle(n_p_rotation +
 	g_world.player.turn_direction * g_world.player.rotation.speed);
 	g_world.player.rotation.angle = n_p_rotation;
-	collision = add_vectors(n_p_position, new_vector(0.5, 0.5));
+	collision = add_vectors(n_p_position,
+	multi_vectors(step, new_vector(2.5, 2.5)));
 	if (is_secret_door(collision) ||
 		(can_walk_on_object(n_p_position) && !wall_at(collision)))
 		g_world.player.position = n_p_position;
