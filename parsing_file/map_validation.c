@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 04:43:34 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/12 19:27:11 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:13:03 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	fill_map(int fd, t_string line, int j, int flag)
 		if ((trim(line, " \t")[0] == '1' ||
 		(trim(line, " \t")[0] == 0 && flag == 1)) && ((i = -1) || 1))
 		{
-			if (is_info_full())
-				handle_error2(ft_strjoin("MISSING ", is_info_full(), 2), FAIL);
+			if (is_info_full(8))
+				handle_error2(ft_strjoin("MISSING ", is_info_full(8), 2), FAIL);
 			do_ur_thing(&flag, line, i, j);
 			j++;
 		}
@@ -78,7 +78,7 @@ void	check_closed_map(void)
 					return (handle_error(INVALID_MAP, FAIL));
 				}
 	}
-	if ((info = is_info_full()))
+	if ((info = is_info_full(10)))
 		return (handle_error2(ft_strjoin("MISSING ", info, 2), FAIL));
 }
 

@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 01:08:43 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/12 19:28:08 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:12:31 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,7 +361,7 @@ void			read_image(t_string line, int index);
 void			read_resolution(t_string line);
 void			validate_args(t_string **args, int nargs, int signal);
 void			check_for_info(t_string line);
-t_string		is_info_full(void);
+t_string		is_info_full(int n);
 void			read_file(t_string file_name);
 void			get_player_pos(int col, int row, char c);
 void			get_rows_cols(t_string file_name);

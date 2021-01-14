@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:16 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/12 19:15:29 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:12:10 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void		check_for_info(t_string tmp)
 		return (handle_error(INVALID_MAP, FAIL));
 }
 
-t_string	is_info_full(void)
+t_string	is_info_full(int n)
 {
 	int i;
 
 	i = -1;
-	while (++i <= 8)
+	while (++i <= n)
 		if (g_infos[i] == 0)
 			return (g_infos_names[i]);
 	return (NULL);
