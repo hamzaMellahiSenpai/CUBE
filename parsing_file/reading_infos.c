@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:11 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/18 15:55:24 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:12:41 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	read_resolution(t_string line)
 	validate_args(&tab, 2, INVALID_RESOLUTION);
 	g_screen.width = ft_atoi(tab[0]);
 	g_screen.height = ft_atoi(tab[1]);
-	printf("%d\n", g_screen.width);
 	if (g_screen.width == 0 || g_screen.height == 0)
 		return (handle_error(INVALID_RESOLUTION, FAIL));
 	if (g_screen.width < 0 || g_screen.height < 0)
