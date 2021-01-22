@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 01:08:43 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/14 16:12:31 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/22 16:47:06 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,8 @@ void			update_col_name(t_string line);
 int				handle_input(int key, void *p);
 void			update_player();
 float			deg_to_rad(int angle);
+int				norm_res(t_string num, int i);
+int				norm_color(t_string num);
 void			put_pixel(t_vector a, int color);
 void			rect(t_vector position, float width, float height, int color);
 void			draw_square(float row, float col, float grid_size, float color);

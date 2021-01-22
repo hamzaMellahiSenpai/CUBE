@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 04:22:02 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/11 19:16:05 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/22 16:11:41 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int		update(int key)
 int		main(int ac, char **av)
 {
 	init_errors();
-	if (ac == 1)
+	if (ac == 1 || ac > 3)
 		handle_error(NOT_VALID_ARGS, FAIL);
 	g_window = NULL;
 	g_img.img = NULL;

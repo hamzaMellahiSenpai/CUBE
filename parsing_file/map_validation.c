@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 04:43:34 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/14 16:13:03 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/22 17:38:25 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	get_rows_cols(t_string file_name)
 		tmp = trim(line, " \t");
 		if (tmp[0] == 'S' && ft_strlen(line) > 2 && line[1] != 'O')
 			g_world.sprites_count++;
-		else if (*tmp != '\0' && map_end == 1)
+		else if ((*line != '\0' || *tmp == 0)&& map_end == 1)
 			return (handle_error(INVALID_MAP, FAIL));
 		else if ((*tmp == '1' || (*line != 0 && *tmp == '\0' && g_infos[map]))
 		&& g_world.rows++)

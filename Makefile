@@ -6,7 +6,7 @@
 #    By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 23:25:02 by hmellahi          #+#    #+#              #
-#    Updated: 2021/01/14 17:13:42 by hmellahi         ###   ########.fr        #
+#    Updated: 2021/01/22 16:45:40 by hmellahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OUT = $(SRC:.c=.o)
 all : ${NAME}
 	
 ${NAME}:
-	gcc ${SRC} $(FLAGS) $(MLX) -D BONUS=0 -o ${NAME}
+	gcc ${SRC} $(FLAGS) $(MLX) -D BONUS=0 -o ${NAME} # -Ofast
 clean:
 	rm -rf ${OUT}
 
@@ -37,4 +37,4 @@ fclean: clean
 re: fclean all
 
 bonus:
-	gcc $(FLAGS) $(SRC) -D BONUS=1 $(MLX) -o ${NAME}
+	gcc $(FLAGS) $(SRC) -D BONUS=1 $(MLX) -o ${NAME} #-Ofast
