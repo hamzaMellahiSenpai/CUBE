@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:16 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/14 16:12:10 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/22 19:21:29 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		check_for_info(t_string tmp)
 		read_color(line, floor_color, ground);
 	else if (line[0] == 'C')
 		read_color(line, ceil_color, skybox);
-	else if (!ft_strchr(" \n\t", line[0]))
+	else if (!ft_strchr(" \n", line[0]))
 		return (handle_error(INVALID_MAP, FAIL));
 }
 

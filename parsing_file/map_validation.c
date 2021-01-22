@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 04:43:34 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/22 17:38:25 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/22 19:21:26 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	fill_map(int fd, t_string line, int j, int flag)
 	while (nbits)
 	{
 		nbits = get_next_line(fd, &line);
-		if ((trim(line, " \t")[0] == '1' ||
-		(trim(line, " \t")[0] == 0 && flag == 1)) && ((i = -1) || 1))
+		if ((trim(line, " ")[0] == '1' ||
+		(trim(line, " ")[0] == 0 && flag == 1)) && ((i = -1) || 1))
 		{
 			if (is_info_full(8))
 				handle_error2(ft_strjoin("MISSING ", is_info_full(8), 2), FAIL);
@@ -117,7 +117,7 @@ void	get_rows_cols(t_string file_name)
 	while (nbits)
 	{
 		nbits = get_next_line(fd, &line);
-		tmp = trim(line, " \t");
+		tmp = trim(line, " ");
 		if (tmp[0] == 'S' && ft_strlen(line) > 2 && line[1] != 'O')
 			g_world.sprites_count++;
 		else if ((*line != '\0' || *tmp == 0)&& map_end == 1)
