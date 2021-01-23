@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 13:55:39 by hmellahi          #+#    #+#             */
-/*   Updated: 2020/10/31 03:20:23 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/23 11:55:05 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	read_file(t_string file_name)
 	check_for_file(file_name);
 	line = NULL;
 	tab = ft_split(file_name, '.');
+	if (tablen((void**)tab) < 2)
+		return (handle_error(INVALID_FILE_NAME, FAIL));
 	if (ft_strcmp(tab[tablen((void**)tab) - 1], "cub") != 0)
 		handle_error(INVALID_FILE_NAME, FAIL);
 	g_world.rows = 2;
