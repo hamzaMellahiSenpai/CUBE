@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 04:22:02 by hmellahi          #+#    #+#             */
-/*   Updated: 2021/01/23 11:53:03 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/23 15:18:16 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_world(void)
 	g_world.player.walk_direction = 0;
 	g_world.player.turn_direction = 0;
 	g_world.player.rotation.speed = 5 * 0.0174533;
-	g_world.player.speed = 15;
+	g_world.player.speed = 5;
 	g_world.player.offset = 0;
 	g_world.player.coins = 100;
 	g_world.player.maxlives = 3;

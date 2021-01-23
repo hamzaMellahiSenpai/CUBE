@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:16 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/23 12:51:38 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/23 14:41:21 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void		validate_args(t_string **args, int nargs, int signal)
 void		check_for_info(t_string tmp)
 {
 	t_string	line;
+	char		str[100];
 
-	line = trim(tmp, " ");
+	line = ft_strdup(tmp);
 	if (*line == 'R')
 		read_resolution(line);
 	else if (line[0] == 'N')
@@ -49,8 +50,11 @@ void		check_for_info(t_string tmp)
 		read_color(line, floor_color, ground);
 	else if (line[0] == 'C')
 		read_color(line, ceil_color, skybox);
-	else if (!ft_strchr(" \n", line[0]))
-		return (handle_error(INVALID_MAP, FAIL));
+	else if (!ft_strchr("\n", line[0]))
+	{
+		sprintf(str, "Invalid identifier |%c|", line[0]);
+		return (handle_error2(str, FAIL));
+	}
 }
 
 t_string	is_info_full(int n)
