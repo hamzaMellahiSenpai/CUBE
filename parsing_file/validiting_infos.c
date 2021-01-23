@@ -6,7 +6,7 @@
 /*   By: hmellahi <hmellahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 02:35:16 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/23 14:41:21 by hmellahi         ###   ########.fr       */
+/*   Updated: 2021/01/23 15:58:37 by hmellahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ void		validate_args(t_string **args, int nargs, int signal)
 		return (handle_error(signal, FAIL));
 }
 
-void		check_for_info(t_string tmp)
+void		check_for_info(t_string line)
 {
-	t_string	line;
 	char		str[100];
 
-	line = ft_strdup(tmp);
 	if (*line == 'R')
 		read_resolution(line);
 	else if (line[0] == 'N')
